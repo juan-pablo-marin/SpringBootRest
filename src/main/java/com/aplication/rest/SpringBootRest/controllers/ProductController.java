@@ -29,6 +29,7 @@ public class ProductController {
             ProductDTO productDTO = ProductDTO.builder()
                     .name(product.getName())
                     .price(product.getPrice())
+                    .maker((product.getMaker()))
                     .id(product.getId())
                     .build();
             return ResponseEntity.ok(productDTO);
