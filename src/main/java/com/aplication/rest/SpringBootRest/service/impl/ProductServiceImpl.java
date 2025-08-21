@@ -41,22 +41,6 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductDTO create(ProductDTO productDTO) {
-        return null;
-    }
-
-    /* @Override
-      public ProductDTO create(ProductDTO productDTO) {
-          Product entity = productMapper.toProduct(productDTO);
-          return productDAO.save(entity);
-      }
-  */
-    @Override
-    public void deleteById(Long id) {
-         productDAO.deleteById(id);
-    }
-
-    @Override
     public List<Product> findByPriceInRange(BigDecimal minPrice, BigDecimal maxDecimal) {
         return productDAO.findByPriceInRange(minPrice, maxDecimal);
     }
@@ -72,5 +56,17 @@ public class ProductServiceImpl implements IProductService {
     public List<ProductDTO> getAll() {
         List<Product> productList = productDAO.findAll();
         return productMapper.toDtos(productList);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        productDAO.deleteById(id);
+    }
+
+    @Override
+    public ProductDTO create(ProductDTO dto) {
+        Product entity = productMapper.toProduct(dto);
+        Product saved = productDAO.save(entity);
+        return productMapper.toProductDto(saved);
     }
 }

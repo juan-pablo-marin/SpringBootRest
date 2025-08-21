@@ -13,10 +13,8 @@ public interface IProductService {
     List<Product> findAll();
     void save(Product product);
     ProductDTO create(ProductDTO productDTO);
-    void deleteById(Long id);
     List<Product> findByPriceInRange(BigDecimal minPrice, BigDecimal maxDecimal );
     ProductDTO getById(Long id);
     List<ProductDTO> getAll();
-
-
+    void deleteById(Long id);
 }

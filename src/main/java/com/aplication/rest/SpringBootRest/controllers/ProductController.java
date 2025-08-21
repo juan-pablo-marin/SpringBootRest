@@ -66,16 +66,6 @@ public class ProductController {
         return ResponseEntity.created(new URI("api/product/save")).build();
     }
 
-    @DeleteMapping ("/delete/{id}")
-    public ResponseEntity <?> deleteById (@PathVariable Long id){
-
-        if (id != null && productService.findById(id).isPresent()){
-            productService.deleteById(id);
-            return ResponseEntity.ok("Regsitro Eliminado");
-        }
-        return ResponseEntity.badRequest().body("la solicitud esta Mal generada ");
-    }
-
     @PutMapping ("/update/{id}")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO){
          Optional<Product> productOptional = productService.findById(id);
@@ -98,25 +88,24 @@ public class ProductController {
         return ResponseEntity.badRequest().build();
     }
 
+
+
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll() {
         List<ProductDTO>  productList =  productService.getAll();
         return ResponseEntity.ok(productList);
     }
 
-  /*  @DeleteMapping("/idDelete/{id}")
-    public void idDelete (@PathVariable Long id) {
-        productService.deleteID(id);
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody ProductDTO productDTO) {
+        ProductDTO product = productService.create(productDTO);
+        return ResponseEntity.ok(product);
     }
-
-    @PostMapping ("/saveproduct")
-    public ResponseEntity<> productSave (@RequestBody ProductDTO productDTO){
-        ProductDTO productDTO =
-        return productService.productSave(productDTO);
-
-
-       return ResponseEntity.created(new URI("api/product/save")).build();
+    @DeleteMapping ("/delete/{id}")
+    public ResponseEntity<?> deleteById (@PathVariable Long id) {
+        productService.deleteById(id);
+        return ResponseEntity.ok("Bien hecho");
     }
- */
+}
 
-         }
+

@@ -1,5 +1,6 @@
 package com.aplication.rest.SpringBootRest.persistence;
 
+import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.Product;
 
 import java.math.BigDecimal;
@@ -15,4 +16,5 @@ public interface IProductDAO {
     void deleteById(Long id);
     /**este metodo es es para usar query metodos **/
     List<Product> findByPriceInRange(BigDecimal minPrice, BigDecimal maxDecimal );
+    ProductDTO create(ProductDTO productDTO);
 }
