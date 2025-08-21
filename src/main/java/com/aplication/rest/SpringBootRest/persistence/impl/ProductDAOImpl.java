@@ -1,5 +1,4 @@
 package com.aplication.rest.SpringBootRest.persistence.impl;
-
 import com.aplication.rest.SpringBootRest.entities.Product;
 import com.aplication.rest.SpringBootRest.persistence.IProductDAO;
 import com.aplication.rest.SpringBootRest.repository.ProductRepository;
@@ -18,6 +17,7 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public Optional<Product> findById(Long id) {
+
         return productRepository.findById(id);
     }
 
@@ -27,8 +27,8 @@ public class ProductDAOImpl implements IProductDAO {
     }
 
     @Override
-    public void save(Product product) {
-        productRepository.save(product);
+    public Product save(Product product) {
+       return productRepository.save(product);
     }
 
     @Override
@@ -40,4 +40,6 @@ public class ProductDAOImpl implements IProductDAO {
     public List<Product> findByPriceInRange(BigDecimal minPrice, BigDecimal maxPricel) {
         return productRepository.findProductByPriceInRange(minPrice, maxPricel);
     }
+
+
 }

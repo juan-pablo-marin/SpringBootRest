@@ -1,6 +1,8 @@
 package com.aplication.rest.SpringBootRest.service.impl;
 
+import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.Product;
+import com.aplication.rest.SpringBootRest.mappers.ProductMapper;
 import com.aplication.rest.SpringBootRest.persistence.impl.ProductDAOImpl;
 import com.aplication.rest.SpringBootRest.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,13 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements IProductService {
+
+    @Autowired
+    private final ProductMapper productMapper;
+
+    public ProductServiceImpl(ProductMapper productMapper) {
+        this.productMapper = productMapper;
+    }
 
     @Autowired
     private ProductDAOImpl productDAO;
@@ -32,12 +41,36 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
+    public ProductDTO create(ProductDTO productDTO) {
+        return null;
+    }
+
+    /* @Override
+      public ProductDTO create(ProductDTO productDTO) {
+          Product entity = productMapper.toProduct(productDTO);
+          return productDAO.save(entity);
+      }
+  */
+    @Override
     public void deleteById(Long id) {
-        productDAO.deleteById(id);
+         productDAO.deleteById(id);
     }
 
     @Override
     public List<Product> findByPriceInRange(BigDecimal minPrice, BigDecimal maxDecimal) {
         return productDAO.findByPriceInRange(minPrice, maxDecimal);
+    }
+
+    @Override
+    public ProductDTO getById(Long id) {
+        return productDAO.findById(id)
+                .map(productMapper::toProductDto)
+                .orElse(null);
+    }
+
+    @Override
+    public List<ProductDTO> getAll() {
+        List<Product> productList = productDAO.findAll();
+        return productMapper.toDtos(productList);
     }
 }

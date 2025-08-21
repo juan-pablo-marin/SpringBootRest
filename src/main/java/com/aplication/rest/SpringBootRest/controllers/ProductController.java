@@ -3,6 +3,7 @@ package com.aplication.rest.SpringBootRest.controllers;
 import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.Product;
 import com.aplication.rest.SpringBootRest.service.IProductService;
+import org.hibernate.sql.results.internal.ResolvedSqlSelection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ProductController {
             ProductDTO productDTO = ProductDTO.builder()
                     .name(product.getName())
                     .price(product.getPrice())
-                    .maker((product.getMaker()))
+                 //   .maker((product.getMaker()))
                     .id(product.getId())
                     .build();
             return ResponseEntity.ok(productDTO);
@@ -43,9 +44,9 @@ public class ProductController {
                 .stream()
                 .map(product -> ProductDTO.builder()
                         .id(product.getId())
-                        .name(product.getName())
-                        .price(product.getPrice())
-                        .maker(product.getMaker())
+                       // .name(product.getName())
+                       // .price(product.getPrice())
+                       // .maker(product.getMaker())
                         .build())
                 .toList();
         return ResponseEntity.ok(productDTO);
@@ -56,7 +57,7 @@ public class ProductController {
         if(productDTO.getName().isBlank() || productDTO.getPrice()==null || productDTO.getMaker()==null ){
             return ResponseEntity.badRequest().build();
         }
-       Product product= Product.builder()
+        Product product= Product.builder()
                 .name(productDTO.getName())
                 .price(productDTO.getPrice())
                 .maker(productDTO.getMaker())
@@ -88,4 +89,34 @@ public class ProductController {
          return ResponseEntity.notFound().build();
     }
 
-}
+    @GetMapping("/get/{id}")
+    public ResponseEntity<ProductDTO> getByid(@PathVariable Long id) {
+        if (id != null && productService.findById(id).isPresent() ){
+            productService.getById(id);
+            return ResponseEntity.ok(productService.getById(id));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll() {
+        List<ProductDTO>  productList =  productService.getAll();
+        return ResponseEntity.ok(productList);
+    }
+
+  /*  @DeleteMapping("/idDelete/{id}")
+    public void idDelete (@PathVariable Long id) {
+        productService.deleteID(id);
+    }
+
+    @PostMapping ("/saveproduct")
+    public ResponseEntity<> productSave (@RequestBody ProductDTO productDTO){
+        ProductDTO productDTO =
+        return productService.productSave(productDTO);
+
+
+       return ResponseEntity.created(new URI("api/product/save")).build();
+    }
+ */
+
+         }
