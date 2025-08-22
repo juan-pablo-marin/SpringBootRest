@@ -5,6 +5,7 @@ import com.aplication.rest.SpringBootRest.entities.Product;
 import com.aplication.rest.SpringBootRest.mappers.ProductMapper;
 import com.aplication.rest.SpringBootRest.persistence.impl.ProductDAOImpl;
 import com.aplication.rest.SpringBootRest.service.IProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ProductServiceImpl implements IProductService {
 
@@ -69,4 +71,15 @@ public class ProductServiceImpl implements IProductService {
         Product saved = productDAO.save(entity);
         return productMapper.toProductDto(saved);
     }
+
+    public void otraFuncion (){
+        System.out.println("Esto viene del servicio");
+    }
+
+   public ProductDTO updatem (ProductDTO product){
+         Product entity = productMapper.toProduct(product);
+         Product saved = productDAO.save(entity);
+         return productMapper.toProductDto(saved);
+
+   }
 }
