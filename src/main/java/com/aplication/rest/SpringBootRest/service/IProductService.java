@@ -1,5 +1,6 @@
 package com.aplication.rest.SpringBootRest.service;
 
+import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.Product;
 
@@ -18,5 +19,6 @@ public interface IProductService {
     List<ProductDTO> getAll();
     void deleteById(Long id);
     void otraFuncion ();
-    public ProductDTO updatem (ProductDTO product);
+    //ProductDTO updatem (ProductDTO product);
+
 }

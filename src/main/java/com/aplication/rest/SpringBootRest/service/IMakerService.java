@@ -22,4 +22,8 @@ public interface IMakerService {
     void deleteById(Long id);
 
     List<MakerDTO> getAll();
+
+    MakerDTO getById(Long id);
+
+    MakerDTO saveMaker (MakerDTO makerDTO);
 }

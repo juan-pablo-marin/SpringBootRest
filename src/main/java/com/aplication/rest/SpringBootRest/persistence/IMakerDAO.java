@@ -1,5 +1,6 @@
 package com.aplication.rest.SpringBootRest.persistence;
 
+import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.Maker;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface IMakerDAO {
 
     Optional<Maker> findById (Long id);
 
-    void save(Maker maker);
+    Maker save(Maker maker);
 
     void deleteById(Long id);
 

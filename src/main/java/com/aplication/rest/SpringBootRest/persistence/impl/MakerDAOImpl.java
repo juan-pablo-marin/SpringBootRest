@@ -1,5 +1,6 @@
 package com.aplication.rest.SpringBootRest.persistence.impl;
 
+import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.Maker;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
 import com.aplication.rest.SpringBootRest.repository.MakerRepository;
@@ -33,8 +34,8 @@ public class MakerDAOImpl implements IMakerDAO {
     }
 
     @Override
-    public void save(Maker maker) {
-        makerRepository.save(maker);
+    public Maker save(Maker maker) {
+        return makerRepository.save(maker);
     }
 
     @Override
@@ -42,3 +43,4 @@ public class MakerDAOImpl implements IMakerDAO {
         makerRepository.deleteById(id);
     }
 }
+

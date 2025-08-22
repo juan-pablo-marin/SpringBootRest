@@ -48,4 +48,19 @@ public class MakerServiceImpl implements IMakerService {
         List<Maker> entity = makerDAO.findAll();
         return makerMapper.toDtos(entity);
     }
+
+    @Override
+    public MakerDTO getById(Long id){
+        return makerDAO.findById(id)
+                .map(makerMapper::toMakerDto)
+                .orElse(null);
+    }
+
+    @Override
+    public MakerDTO saveMaker(MakerDTO makerDTO){
+        Maker entity = makerMapper.toMaker(makerDTO);
+        Maker saved = makerDAO.save(entity);
+        return makerMapper.toMakerDto(saved);
+    }
+
 }

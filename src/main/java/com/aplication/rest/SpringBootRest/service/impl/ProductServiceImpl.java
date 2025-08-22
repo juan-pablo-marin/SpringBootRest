@@ -76,10 +76,10 @@ public class ProductServiceImpl implements IProductService {
         System.out.println("Esto viene del servicio");
     }
 
-   public ProductDTO updatem (ProductDTO product){
-         Product entity = productMapper.toProduct(product);
+  /* public ProductDTO updatem (ProductDTO productDTO){
+         Product entity = productMapper.toProduct(productDTO);
          Product saved = productDAO.save(entity);
          return productMapper.toProductDto(saved);
 
-   }
+   }*/
 }

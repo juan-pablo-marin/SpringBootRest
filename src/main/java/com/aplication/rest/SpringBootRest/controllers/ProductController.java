@@ -88,7 +88,7 @@ public class ProductController {
 
     @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> deleteById (@PathVariable Long id) {
-       if(productService.findById(id).isPresent()){
+       if(id !=null && productService.findById(id).isPresent()){
            productService.deleteById(id);
            productService.otraFuncion();
            return ResponseEntity.ok("Registro Eliminado");
@@ -96,16 +96,16 @@ public class ProductController {
            return ResponseEntity.badRequest().build();
        }
 
-       @PutMapping("/updatem/{id}")
-       public ResponseEntity<?> updateM (@PathVariable Long id, @RequestBody ProductDTO productDTO){
-              Optional<Product> productOptional = productService.findById(id);
+   @PutMapping("/updatem/{id}")
+   public ResponseEntity<?> updateM (@PathVariable Long id, @RequestBody ProductDTO productDTO){
+          Optional<Product> productOptional = productService.findById(id);
 
-              if(productOptional.isPresent() ){
-                  productService.updatem(productDTO);
-                  return ResponseEntity.ok("Registro Actualizado");
-              }
-              return ResponseEntity.badRequest().build();
-       }
+          if(productOptional.isPresent() ){
+              productService.create(productDTO);
+              return ResponseEntity.ok("Registro Actualizado");
+          }
+          return ResponseEntity.badRequest().build();
+   }
 
     @PutMapping ("/update/{id}")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO){

@@ -44,12 +44,4 @@ public class ProductDAOImpl implements IProductDAO {
         return productRepository.findProductByPriceInRange(minPrice, maxPricel);
     }
 
-    @Override
-    public ProductDTO create(ProductDTO dto) {
-        Product entity = productMapper.toProduct(dto);
-        Product saved = productRepository.save(entity);
-        return productMapper.toProductDto(saved);
-    }
-
-
 }
