@@ -1,7 +1,6 @@
 package com.aplication.rest.SpringBootRest.controllers;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.Maker;
 import com.aplication.rest.SpringBootRest.service.IMakerService;
 import jakarta.validation.Valid;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
@@ -21,20 +19,6 @@ public class MakerController {
     @Autowired
     private IMakerService makerService;
 
- /*   @PostMapping("/save")
-    public ResponseEntity <?> save ( @RequestBody MakerDTO makerDTO ) throws URISyntaxException {
-
-      if(makerDTO.getId()==null || makerDTO.getName().isBlank() || makerDTO.getProductList().isEmpty() ){
-          ResponseEntity.badRequest().body("sdsdsd");
-      }
-
-       Maker maker =  Maker.builder()
-               .name(makerDTO.getName())
-               .build();
-       makerService.save(maker);
-       return ResponseEntity.created(new URI("api/maker/save")).build();
-    }
-*/
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete ( @PathVariable Long id){
 
@@ -58,20 +42,19 @@ public class MakerController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateMaker (@PathVariable Long id, @RequestBody MakerDTO makerDTO){
+    public ResponseEntity<?> updateMaker (@Valid @PathVariable Long id, @RequestBody MakerDTO makerDTO){
         Optional<Maker> makerOptional = makerService.findById(id);
 
         if(makerOptional.isPresent()){
-            makerService.saveMaker(makerDTO);
-            return ResponseEntity.ok().build();
+            MakerDTO update =makerService.saveMaker(makerDTO);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(update);
         }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error");
     }
 
     @PostMapping ("/save")
     public ResponseEntity<?> save (@Valid @RequestBody MakerDTO makerDTO) throws URISyntaxException {
         MakerDTO create=makerService.saveMaker(makerDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(create);//.created(new URI("api/maker/save")).build();
-
     }
 }

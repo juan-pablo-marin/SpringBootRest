@@ -20,6 +20,7 @@ public class MakerDTO {
     /**
      * Se agregan los mismos atributos de la clase sin las anotaciones
      */
+
     private Long id;
     @NotNull(message = "El campo 'nombre' es obligatorio")
     private String name;
