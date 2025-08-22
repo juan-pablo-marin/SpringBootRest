@@ -89,5 +89,11 @@ public class MakerController {
         return ResponseEntity.badRequest().build();
     }
 
+    @GetMapping("/getAll")
+    public ResponseEntity <?> getAll (){
+       List<MakerDTO> list =  makerService.getAll();
+       return ResponseEntity.ok(list);
+    }
+
 
 }

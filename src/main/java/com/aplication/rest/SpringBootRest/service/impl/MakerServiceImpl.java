@@ -1,7 +1,8 @@
 package com.aplication.rest.SpringBootRest.service.impl;
 
-import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
+import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.Maker;
+import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
 import com.aplication.rest.SpringBootRest.service.IMakerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,13 @@ import java.util.Optional;
 
 @Service
 public class MakerServiceImpl implements IMakerService {
+
+    @Autowired
+    private final MakerMapper makerMapper;
+
+    public MakerServiceImpl(MakerMapper makerMapper) {
+        this.makerMapper = makerMapper;
+    }
 
     @Autowired
     private IMakerDAO makerDAO;
@@ -36,4 +44,8 @@ public class MakerServiceImpl implements IMakerService {
         makerDAO.deleteById(id);
     }
 
+    public List<MakerDTO> getAll(){
+        List<Maker> entity = makerDAO.findAll();
+        return makerMapper.toDtos(entity);
+    }
 }
