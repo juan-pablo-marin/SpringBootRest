@@ -1,6 +1,6 @@
 package com.aplication.rest.SpringBootRest.repository;
 
-import com.aplication.rest.SpringBootRest.entities.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

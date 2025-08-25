@@ -1,6 +1,6 @@
 package com.aplication.rest.SpringBootRest.controllers.dto;
 
-import com.aplication.rest.SpringBootRest.entities.Product;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

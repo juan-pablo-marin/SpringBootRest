@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.controllers;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
 import com.aplication.rest.SpringBootRest.service.IMakerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

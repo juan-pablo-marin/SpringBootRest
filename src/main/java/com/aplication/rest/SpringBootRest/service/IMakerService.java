@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.service;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
 
 import java.util.List;
 import java.util.Optional;

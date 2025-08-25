@@ -1,7 +1,6 @@
 package com.aplication.rest.SpringBootRest.repository;
 
-import com.aplication.rest.SpringBootRest.entities.Product;
-import org.springframework.boot.autoconfigure.kafka.DefaultKafkaProducerFactoryCustomizer;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

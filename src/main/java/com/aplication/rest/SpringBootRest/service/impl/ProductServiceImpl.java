@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.service.impl;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
-import com.aplication.rest.SpringBootRest.entities.Product;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
 import com.aplication.rest.SpringBootRest.mappers.ProductMapper;
 import com.aplication.rest.SpringBootRest.persistence.impl.ProductDAOImpl;
 import com.aplication.rest.SpringBootRest.service.IProductService;

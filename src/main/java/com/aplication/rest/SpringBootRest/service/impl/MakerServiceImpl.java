@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.service.impl;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
 import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
 import com.aplication.rest.SpringBootRest.service.IMakerService;

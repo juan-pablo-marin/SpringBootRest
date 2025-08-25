@@ -1,7 +1,6 @@
 package com.aplication.rest.SpringBootRest.persistence.impl;
 
-import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
 import com.aplication.rest.SpringBootRest.repository.MakerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
