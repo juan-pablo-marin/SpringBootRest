@@ -1,8 +1,8 @@
-package com.aplication.rest.SpringBootRest.controllers;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.in;
 
-import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
-import com.aplication.rest.SpringBootRest.service.IMakerService;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out.IMakerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

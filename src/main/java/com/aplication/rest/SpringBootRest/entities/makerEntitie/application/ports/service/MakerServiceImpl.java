@@ -1,10 +1,10 @@
-package com.aplication.rest.SpringBootRest.service.impl;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.service;
 
-import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out.IMakerService;
 import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
-import com.aplication.rest.SpringBootRest.service.IMakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.aplication.rest.SpringBootRest.entities.productEntiti;
 
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;

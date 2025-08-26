@@ -1,5 +1,5 @@
 package com.aplication.rest.SpringBootRest.controllers.dto;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

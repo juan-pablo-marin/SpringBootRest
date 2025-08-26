@@ -1,6 +1,6 @@
-package com.aplication.rest.SpringBootRest.repository;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out;
 
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

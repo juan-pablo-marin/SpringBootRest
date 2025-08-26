@@ -1,8 +1,8 @@
 package com.aplication.rest.SpringBootRest.persistence.impl;
 
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
-import com.aplication.rest.SpringBootRest.repository.MakerRepository;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out.MakerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +11,6 @@ import java.util.Optional;
 
 @Component
 public class MakerDAOImpl implements IMakerDAO {
-
-    /**
-     * aqui en el DAO se implementa de la interface, por lo tanto todos los metodos definidos
-     * se deben implementar aqui
-     * para hacerlo nos traemos el repositorio donde estan las funiones a la base de datos CRUD
-     * no se crearon, como hererdo de CRUDREPOSITORY podemos usar sus metodos
-     */
 
     @Autowired
     private MakerRepository makerRepository;

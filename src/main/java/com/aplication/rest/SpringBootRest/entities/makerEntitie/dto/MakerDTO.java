@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.controllers.dto;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.dto;
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
 import jakarta.validation.constraints.NotNull;

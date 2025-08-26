@@ -1,8 +1,8 @@
 package com.aplication.rest.SpringBootRest.mappers;
 
 
-import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.Maker;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

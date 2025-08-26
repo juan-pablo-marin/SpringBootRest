@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.entities.makerEntitie;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model;
 
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
