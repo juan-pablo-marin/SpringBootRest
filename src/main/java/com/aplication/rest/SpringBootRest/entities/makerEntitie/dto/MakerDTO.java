@@ -1,6 +1,6 @@
 package com.aplication.rest.SpringBootRest.entities.makerEntitie.dto;
 
-import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

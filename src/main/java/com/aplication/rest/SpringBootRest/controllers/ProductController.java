@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.controllers;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 import com.aplication.rest.SpringBootRest.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -90,7 +90,6 @@ public class ProductController {
     public ResponseEntity<?> deleteById (@PathVariable Long id) {
        if(id !=null && productService.findById(id).isPresent()){
            productService.deleteById(id);
-           productService.otraFuncion();
            return ResponseEntity.ok("Registro Eliminado");
        }
            return ResponseEntity.badRequest().build();

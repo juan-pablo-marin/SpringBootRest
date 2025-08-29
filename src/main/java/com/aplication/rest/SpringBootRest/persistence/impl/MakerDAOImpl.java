@@ -2,7 +2,7 @@ package com.aplication.rest.SpringBootRest.persistence.impl;
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out.MakerRepository;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out.persistence.MakerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

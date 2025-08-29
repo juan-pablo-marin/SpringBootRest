@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.service;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.ProductDTO;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;

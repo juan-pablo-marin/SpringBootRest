@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.entities.productEntiti;
+package com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model;
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import com.fasterxml.jackson.annotation.JsonIgnore;

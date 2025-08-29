@@ -1,5 +1,5 @@
 package com.aplication.rest.SpringBootRest.persistence.impl;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.Product;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 import com.aplication.rest.SpringBootRest.persistence.IProductDAO;
 import com.aplication.rest.SpringBootRest.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
