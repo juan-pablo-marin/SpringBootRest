@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.controllers.dto;
+package com.aplication.rest.SpringBootRest.entities.productEntiti.dto;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -2,6 +2,8 @@ package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.por
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
 
-public interface SaveMakerUseCase {
-    MakerDTO saveMaker (MakerDTO makerDTO);
+public interface UpdateMakerUseCase {
+
+    MakerDTO update (MakerDTO makerDTO);
+
 }

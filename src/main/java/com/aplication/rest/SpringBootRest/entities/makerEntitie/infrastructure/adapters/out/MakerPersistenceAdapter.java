@@ -4,7 +4,6 @@ import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.port
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out.persistence.MakerRepository;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,9 @@ public class MakerPersistenceAdapter implements  MakerOutputPort {
     }
 
     @Override
-    public Optional<Maker> getById(Long id) {
-        return repository.findById(id);
-
+    public Optional<MakerDTO> getById(Long id) {
+        return repository.findById(id)
+                .map(makerMapper::toMakerDto);
     }
 
     @Override
@@ -45,31 +44,20 @@ public class MakerPersistenceAdapter implements  MakerOutputPort {
     public MakerDTO getId(Long id) {
         return repository.findById(id)
                 .map(makerMapper::toMakerDto)
-                .orElseThrow() -> new Exception ("Usuario no encontrado");
+                .orElseThrow();
     }
 
-    //public UserDTO getById(Long id) {
-//        return port.findById(id)
-//                .map(mapper::toDto)
-//                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
-//
-
-
+    @Override
+    public MakerDTO saveMaker(MakerDTO makerDTO) {
+        Maker entity = makerMapper.toMaker(makerDTO);
+        Maker saved = repository.save(entity);
+        return makerMapper.toMakerDto(saved);
     }
 
-
-//    @Override
-//    public Optional<MakerDTO> getById(Long id){
-//
-//    Optional<MakerDTO> optEntity = repository.findById(id).map(makerMapper.toMaker());
-//    if (optEntity.isPresent()) {
-//            MakerDTO entity = optEntity.get();
-//            return Optional.of(makerMapper.toMakerDto (entity));
-//        }
-//    return Optional.empty();
-//    }
-
+    @Override
+    public MakerDTO update(MakerDTO makerDTO) {
+        Maker entity = makerMapper.toMaker(makerDTO);
+        Maker saved = repository.save(entity);
+        return makerMapper.toMakerDto(saved);
+    }
 }
-
-
-

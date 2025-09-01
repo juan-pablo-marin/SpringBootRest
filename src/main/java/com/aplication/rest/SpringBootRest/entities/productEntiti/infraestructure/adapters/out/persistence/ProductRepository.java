@@ -1,6 +1,7 @@
-package com.aplication.rest.SpringBootRest.repository;
+package com.aplication.rest.SpringBootRest.entities.productEntiti.infraestructure.adapters.out.persistence;
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends CrudRepository <Product, Long> {
+public interface ProductRepository extends JpaRepository <Product, Long> {
     /**
      * utiliza la anotacion Query porque JPA no conoce InRange,se parece q SQL pero no lo es
      * @param minPrice

@@ -6,5 +6,5 @@ import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
 import java.util.Optional;
 
 public interface GetByIdUseCase {
-    Maker getById(Long id);
+    Optional<MakerDTO> getById(Long id);
 }
