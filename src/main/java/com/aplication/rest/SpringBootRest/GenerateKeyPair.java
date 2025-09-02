@@ -3,7 +3,6 @@ package com.aplication.rest.SpringBootRest;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemWriter;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.KeyPairGenerator;
 import java.io.OutputStreamWriter;

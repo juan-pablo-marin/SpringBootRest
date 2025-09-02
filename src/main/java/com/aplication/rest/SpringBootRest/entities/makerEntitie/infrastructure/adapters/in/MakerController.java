@@ -6,10 +6,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.annotation.Retention;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +24,22 @@ public class MakerController {
     private final GetByIdUseCase getByIdUseCase;
     private final SaveMakerUseCase saveMakerUseCase;
     private final UpdateMakerUseCase updateMakerUseCase;
+
+    @GetMapping ("/dataTest")
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
+    public Map<String, Object> dataTest (Authentication authentication) {
+        return Map.of(
+                "message", "Data Test",
+                "usernaame", authentication.getName(),
+                "authorities", authentication.getAuthorities()
+        );
+    }
+
+    @GetMapping ("/saveData")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    public Map<String, Object> saveData (Authentication authentication, @RequestBody String data){
+       return  Map.of("dataSaved",data.toUpperCase());
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete (@Valid @PathVariable Long id){
