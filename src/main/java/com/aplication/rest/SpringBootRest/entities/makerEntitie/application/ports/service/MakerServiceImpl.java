@@ -3,7 +3,8 @@ package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.por
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.in.*;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out.MakerOutputPort;
-import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.mapper.MakerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class MakerServiceImpl implements  GetUseCase, DeleteByIdUseCase , GetByIdUseCase , GetAllUseCase, SaveMakerUseCase, UpdateMakerUseCase
+public class MakerServiceImpl implements PageFindAllMaker, GetUseCase, DeleteByIdUseCase , GetByIdUseCase , GetAllUseCase, SaveMakerUseCase, UpdateMakerUseCase
 {
 
     private final MakerOutputPort makerOutputPort;
@@ -51,5 +52,10 @@ public class MakerServiceImpl implements  GetUseCase, DeleteByIdUseCase , GetByI
     @Override
     public MakerDTO update(MakerDTO makerDTO) {
         return makerOutputPort.update(makerDTO);
+    }
+
+    @Override
+    public PageResult<MakerDTO> listAll(int page, int size) {
+        return makerOutputPort.listAll(page ,size);
     }
 }

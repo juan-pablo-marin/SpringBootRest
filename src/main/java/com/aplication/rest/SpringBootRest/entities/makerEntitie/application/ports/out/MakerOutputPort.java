@@ -1,6 +1,7 @@
 package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out;
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface MakerOutputPort {
     MakerDTO getId(Long id);
     MakerDTO saveMaker (MakerDTO makerDTO);
     MakerDTO update (MakerDTO makerDTO);
-
+    PageResult<MakerDTO> listAll(int page, int size);
 }

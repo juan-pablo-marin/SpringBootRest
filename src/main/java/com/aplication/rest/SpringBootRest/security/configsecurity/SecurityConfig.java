@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.config;
+package com.aplication.rest.SpringBootRest.security.configsecurity;
 
 
 import com.nimbusds.jose.jwk.JWK;
@@ -18,6 +18,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -41,6 +42,8 @@ public class SecurityConfig {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+
 
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -67,11 +70,20 @@ public class SecurityConfig {
         );
     }
 
+
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth-> auth.requestMatchers("/token/**").permitAll())
+                .authorizeHttpRequests(auth-> auth.
+                        requestMatchers("/token/**",
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/swagger-config**",
+                                "/api-docs/**",
+                                "/swagger-ui-bundle.js**"
+                        ).permitAll())
                 .authorizeHttpRequests(// congiguramos la autorizacion para las peticiones Http
                         (auth) ->auth.anyRequest().authenticated()
                 )

@@ -1,9 +1,7 @@
-package com.aplication.rest.SpringBootRest.config;
+package com.aplication.rest.SpringBootRest.security.configsecurity;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
-import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 

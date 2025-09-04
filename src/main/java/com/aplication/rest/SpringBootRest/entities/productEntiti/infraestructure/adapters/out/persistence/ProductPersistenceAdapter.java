@@ -4,7 +4,7 @@ import com.aplication.rest.SpringBootRest.entities.productEntiti.application.por
 import com.aplication.rest.SpringBootRest.entities.productEntiti.application.ports.out.ProductPortOut;
 import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 import com.aplication.rest.SpringBootRest.entities.productEntiti.dto.ProductDTO;
-import com.aplication.rest.SpringBootRest.mappers.ProductMapper;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.mapper.ProductMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

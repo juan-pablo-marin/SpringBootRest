@@ -2,24 +2,23 @@ package com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.in.*;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
+@Tag(name = "FABRICANTES", description = "CRUD para los Fabricantes")
 @RestController
 @RequestMapping("api/maker")
 @RequiredArgsConstructor
@@ -30,24 +29,11 @@ public class MakerController {
     private final GetByIdUseCase getByIdUseCase;
     private final SaveMakerUseCase saveMakerUseCase;
     private final UpdateMakerUseCase updateMakerUseCase;
+    private final PageFindAllMaker pageFindAllMaker;
 
-    @GetMapping ("/dataTest")
-    @PreAuthorize("hasAuthority('SCOPE_USER')")
-    public Map<String, Object> dataTest (Authentication authentication) {
-        return Map.of(
-                "message", "Data Test",
-                "usernaame", authentication.getName(),
-                "authorities", authentication.getAuthorities()
-        );
-    }
-
-    @GetMapping ("/saveData")
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
-    public Map<String, Object> saveData (Authentication authentication, @RequestBody String data){
-       return  Map.of("dataSaved",data.toUpperCase());
-    }
-
+    @Operation(summary = "Elimina un registro por parametro -> SCOPE : USER ")
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     public ResponseEntity<?> delete (@Valid @PathVariable Long id){
         if(id==null){
         return ResponseEntity.badRequest().build();
@@ -56,28 +42,47 @@ public class MakerController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Eliminado correctamente");
     }
 
+    @Operation(summary = "Genera el listado de todos los Fabricantes con su informacion -> SCOPE : USER")
     @GetMapping("/getAll")
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     public ResponseEntity <?> getAll (){
        List<MakerDTO> list =  getAllUseCase.getAll();
        return ResponseEntity.ok(list);
     }
 
+    @Operation(summary = "Genera la informacion de un Fabricantes segun Id -> SCOPE : USER")
     @GetMapping("/get/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     public ResponseEntity<?> getById(@PathVariable Long id ){
         Optional<MakerDTO> makerDTO= getByIdUseCase.getById(id);
      return ResponseEntity.ok(makerDTO);
     }
 
+    @Operation(summary = "Guarda los datos enviados en la base de datos-> SCOPE : ADMIN")
     @PostMapping("/save")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     public  ResponseEntity<?> save (@Valid @RequestBody MakerDTO makerDTO) {
         MakerDTO maker =  saveMakerUseCase.saveMaker(makerDTO);
         return ResponseEntity.ok(maker);
     }
 
+
+    @Operation(summary = "Actualiza los datos de un Fabricante -> SCOPE : ADMIN")
     @PutMapping("/update/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     public ResponseEntity<?> update (@PathVariable Long id, @RequestBody MakerDTO makerDTO ){
         makerDTO.setId(id);
         MakerDTO makerUpdate = updateMakerUseCase.update(makerDTO);
         return  ResponseEntity.ok(makerUpdate);
     }
+
+    @Operation(summary = "Muestra por paginacion la informacion solicitada-> SCOPE : ADMIN")
+    @GetMapping ("/listAll")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    public ResponseEntity<PageResult<MakerDTO>> listAll(
+            @Parameter(description = "Primer número", example = "10") Pageable pageable) {
+        var result = pageFindAllMaker.listAll(pageable.getPageNumber(), pageable.getPageSize());
+        return ResponseEntity.ok(result);
+    }
+
 }

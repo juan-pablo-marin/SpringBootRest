@@ -3,10 +3,14 @@ package com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out.MakerOutputPort;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out.persistence.MakerRepository;
-import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
+
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.mapper.MakerMapper;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,14 +37,6 @@ public class MakerPersistenceAdapter implements  MakerOutputPort {
     }
 
     @Override
-    public List<MakerDTO> getAll() {
-        return repository.findAll()
-                .stream()
-                .map(makerMapper::toMakerDto)
-                .toList();
-    }
-
-    @Override
     public MakerDTO getId(Long id) {
         return repository.findById(id)
                 .map(makerMapper::toMakerDto)
@@ -59,5 +55,23 @@ public class MakerPersistenceAdapter implements  MakerOutputPort {
         Maker entity = makerMapper.toMaker(makerDTO);
         Maker saved = repository.save(entity);
         return makerMapper.toMakerDto(saved);
+    }
+
+    @Override
+    public List<MakerDTO> getAll() {
+        return repository.findAll()
+                .stream()
+                .map(makerMapper::toMakerDto)
+                .toList();
+    }
+
+    @Override
+    public PageResult<MakerDTO> listAll(int page, int size) {
+        var pg = repository.findAll(PageRequest.of(page, size));
+        return PageResult.<MakerDTO>builder()
+                .content(pg.getContent().stream().map(makerMapper::toMakerDto).toList())
+                .totalElements(pg.getTotalElements())
+                .totalPages(pg.getTotalPages())
+                .build();
     }
 }

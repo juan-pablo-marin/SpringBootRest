@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.controllers;
+package com.aplication.rest.SpringBootRest.security.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,7 +76,7 @@ public class AuthController {
                 .subject(subject) // Establecemos el nombre del usuario autenticado
                 .issuedAt(instant) //Establecemos la hora de emision del token
         // Establecemos la fecha de expiracion del JWT en min apartir de la hora actual
-                .expiresAt(instant.plus(withRefreshToken?1:2, ChronoUnit.MINUTES))
+                .expiresAt(instant.plus(withRefreshToken?19:20, ChronoUnit.MINUTES))
                 .issuer("security-service") // Emisor del token
                 .claim("scope",scope)
                 .build();

@@ -1,6 +1,6 @@
 package com.aplication.rest.SpringBootRest;
 
-import com.aplication.rest.SpringBootRest.config.RsaKeysConfig;
+import com.aplication.rest.SpringBootRest.security.configsecurity.RsaKeysConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -19,7 +19,6 @@ public class SpringBootRestApplication {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-
         return new BCryptPasswordEncoder();
     }
 

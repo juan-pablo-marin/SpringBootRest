@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.mappers;
+package com.aplication.rest.SpringBootRest.entities.productEntiti.mapper;
 
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.dto.ProductDTO;

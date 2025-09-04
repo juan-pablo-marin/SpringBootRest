@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest;
+package com.aplication.rest.SpringBootRest.security;
 
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemWriter;
