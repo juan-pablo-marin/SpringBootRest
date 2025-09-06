@@ -1,7 +1,7 @@
-package com.aplication.rest.SpringBootRest.entities.productEntiti.mapper;
+package com.aplication.rest.SpringBootRest.entities.productEntiti.domain.mapper;
 
 
-import com.aplication.rest.SpringBootRest.entities.productEntiti.dto.ProductDTO;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

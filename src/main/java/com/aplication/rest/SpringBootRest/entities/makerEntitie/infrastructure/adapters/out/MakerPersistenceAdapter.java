@@ -2,11 +2,11 @@ package com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out.MakerOutputPort;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.configuration.PageResult;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.out.persistence.MakerRepository;
 
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.mapper.MakerMapper;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.mapper.MakerMapper;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;

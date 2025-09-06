@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out;
 
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.configuration.PageResult;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

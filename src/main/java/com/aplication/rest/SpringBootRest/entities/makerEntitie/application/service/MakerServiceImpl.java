@@ -1,10 +1,10 @@
-package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.service;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.application.service;
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.in.*;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.out.MakerOutputPort;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.mapper.MakerMapper;
+import com.aplication.rest.SpringBootRest.configuration.PageResult;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.mapper.MakerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

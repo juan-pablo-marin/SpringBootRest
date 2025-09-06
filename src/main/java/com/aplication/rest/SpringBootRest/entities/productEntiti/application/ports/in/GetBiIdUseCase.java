@@ -2,11 +2,8 @@ package com.aplication.rest.SpringBootRest.entities.productEntiti.application.po
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.dto.ProductDTO;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface GetAllUseCase {
-
-    List<ProductDTO> finAll();
+public interface GetBiIdUseCase {
+    Optional<ProductDTO> getbiid (Long id);
 }
-
-

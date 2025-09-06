@@ -1,8 +1,8 @@
 package com.aplication.rest.SpringBootRest.entities.makerEntitie.infrastructure.adapters.in;
 
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.application.ports.in.*;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.PageResult;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.configuration.PageResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,13 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Tag(name = "FABRICANTES", description = "CRUD para los Fabricantes")
+@Tag(name = "Fabricantes", description = "Controlador que ejecuta el CRUD para los Fabricantes")
 @RestController
 @RequestMapping("api/maker")
 @RequiredArgsConstructor
@@ -70,17 +69,19 @@ public class MakerController {
     @Operation(summary = "Actualiza los datos de un Fabricante -> SCOPE : ADMIN")
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
-    public ResponseEntity<?> update (@PathVariable Long id, @RequestBody MakerDTO makerDTO ){
+    public ResponseEntity<?> update ( @Parameter(description = "Ingrese el Id del Fabricante que va modificar")
+                                          @PathVariable  Long id,
+                                      @RequestBody  MakerDTO makerDTO ){
         makerDTO.setId(id);
         MakerDTO makerUpdate = updateMakerUseCase.update(makerDTO);
         return  ResponseEntity.ok(makerUpdate);
     }
 
+
     @Operation(summary = "Muestra por paginacion la informacion solicitada-> SCOPE : ADMIN")
     @GetMapping ("/listAll")
     @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
-    public ResponseEntity<PageResult<MakerDTO>> listAll(
-            @Parameter(description = "Primer número", example = "10") Pageable pageable) {
+    public ResponseEntity<PageResult<MakerDTO>> listAll(Pageable pageable) {
         var result = pageFindAllMaker.listAll(pageable.getPageNumber(), pageable.getPageSize());
         return ResponseEntity.ok(result);
     }

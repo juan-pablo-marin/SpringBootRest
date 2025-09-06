@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest.entities.makerEntitie.dto;
+package com.aplication.rest.SpringBootRest.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

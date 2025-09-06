@@ -1,14 +1,12 @@
 package com.aplication.rest.SpringBootRest.entities.productEntiti.infraestructure.adapters.out.persistence;
 
-import com.aplication.rest.SpringBootRest.entities.productEntiti.application.ports.in.*;
 import com.aplication.rest.SpringBootRest.entities.productEntiti.application.ports.out.ProductPortOut;
 import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.dto.ProductDTO;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.mapper.ProductMapper;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.dto.ProductDTO;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.mapper.ProductMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -27,13 +25,8 @@ public class ProductPersistenceAdapter implements ProductPortOut {
     }
 
     @Override
-    public void otraFuncion() {
-
-    }
-
-    @Override
     public void deleteById(Long id) {
-
+        productRepository.deleteById(id);
     }
 
     @Override
@@ -46,17 +39,22 @@ public class ProductPersistenceAdapter implements ProductPortOut {
 
     @Override
     public Optional<ProductDTO> findById(Long id) {
-        return Optional.empty();
+        return productRepository.findById(id)
+                .map(productMapper::toProductDto);
     }
 
     @Override
     public ProductDTO saveProduct(ProductDTO productDTO) {
-        return null;
+        Product entity= productMapper.toProduct(productDTO);
+        Product saved = productRepository.save(entity);
+        return productMapper.toProductDto(saved);
     }
 
     @Override
     public ProductDTO updateProduct(ProductDTO productDTO) {
-        return null;
+        Product entity= productMapper.toProduct(productDTO);
+        Product saved = productRepository.save(entity);
+        return productMapper.toProductDto(saved);
     }
 }
 

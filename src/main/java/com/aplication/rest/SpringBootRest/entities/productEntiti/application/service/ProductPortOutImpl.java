@@ -1,7 +1,7 @@
 package com.aplication.rest.SpringBootRest.entities.productEntiti.application.service;
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.application.ports.in.*;
-import com.aplication.rest.SpringBootRest.entities.productEntiti.dto.ProductDTO;
+import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.dto.ProductDTO;
 import com.aplication.rest.SpringBootRest.entities.productEntiti.application.ports.out.ProductPortOut;
 
 import lombok.AllArgsConstructor;
@@ -17,10 +17,6 @@ public class ProductPortOutImpl implements DeleteByIdUseCase, GetByIdUseCase, Ge
 
     public final ProductPortOut productPortOut;
 
-    public void otraFuncion (){
-        System.out.println("Esto viene del servicio");
-    }
-
     @Override
     public List<ProductDTO> finAll() {
         return productPortOut.finAll();
@@ -31,13 +27,13 @@ public class ProductPortOutImpl implements DeleteByIdUseCase, GetByIdUseCase, Ge
         return productPortOut.findById(id);
     }
 
-    @Override
+     @Override
     public ProductDTO saveProduct(ProductDTO productDTO) {
         return productPortOut.saveProduct(productDTO);
     }
 
     @Override
-    public ProductDTO updateProduct(ProductDTO productDTO) {
+    public ProductDTO updateProduct( ProductDTO productDTO) {
         return productPortOut.updateProduct(productDTO);
     }
 

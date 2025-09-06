@@ -1,7 +1,7 @@
-package com.aplication.rest.SpringBootRest.entities.makerEntitie.mapper;
+package com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.mapper;
 
 
-import com.aplication.rest.SpringBootRest.entities.makerEntitie.dto.MakerDTO;
+import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.model.Maker;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
