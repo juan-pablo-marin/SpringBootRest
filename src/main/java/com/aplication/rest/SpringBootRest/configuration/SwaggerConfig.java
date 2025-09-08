@@ -13,18 +13,18 @@ import org.springframework.http.HttpHeaders;
 
 @OpenAPIDefinition(
         info = @Info(
-                title = "API CLUBES",
-                description = "Our app provides a concise listing of football team names",
-                termsOfService = "www.unprogramadornace.com/terminos_y_condiciones",
+                title = "API DEMO",
+                description = "Our app provides the methods of two related Entity ",
+                termsOfService = "www.proyectosjuan.com/terminos_y_condiciones",
                 version = "1.0.0",
                 contact = @Contact(
-                        name = "Santiago Perez",
-                        url = "https://unprogramadornace.com",
-                        email = "santy@mail.com"
+                        name = "Juan Pablo Marin",
+                        url = "https://proyectosjuan.com",
+                        email = "jupamarin@gmail.com"
                 ),
                 license = @License(
-                        name = "Standard Software Use License for UnProgramadorNace",
-                        url = "www.unprogramadornace.com/licence"
+                        name = "Standard Software Use License for every body",
+                        url = "www.proyectosjuan.com/licence"
                 )
         ),
         servers = {
@@ -34,7 +34,7 @@ import org.springframework.http.HttpHeaders;
                 ),
                 @Server(
                         description = "PROD SERVER",
-                        url = "http://unprogramadornace:8080"
+                        url = "http://proyectosjuan:8080"
                 )
        }
 //        security = @SecurityRequirement(
