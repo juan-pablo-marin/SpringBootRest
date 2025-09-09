@@ -1,5 +1,9 @@
 package com.aplication.rest.SpringBootRest.security.controllers;
 
+import com.aplication.rest.SpringBootRest.configuration.swagger.ApiCommonResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
@@ -36,8 +41,25 @@ public class AuthController {
     private UserDetailsService userDetailsService;
 
 
+    @Operation(summary = "Aqui Genera el token para poder operar los metodos ",
+            description = "para ingresar debe: grantType= password, username= user3, password= 1234, withRefreshToken = true, refreshToken = a  ",
+            tags ={"Token","Autorizacion"})
+    @ApiCommonResponses
+    @Parameters({
+            @Parameter(name = "grantType", description = "Tipo Password"),
+            @Parameter(name = "username", description = "Usuario autenticado", required = true),
+            @Parameter(name = "password", description = "password de ingreso", required = true),
+            @Parameter(name = "withRefreshToken", description = "withRefreshToken", required = false),
+            @Parameter(name = "refreshToken", description = "refreshToken", required = false)
+    })
     @PostMapping("/token")
-    public ResponseEntity<Map<String,String>> generarToken (String grantType, String username,String password, boolean withRefreshToken, String refreshToken){
+    public ResponseEntity<Map<String,String>> generarToken (
+            @RequestParam(defaultValue ="password",required = true) String grantType,
+            @RequestParam(defaultValue = "user3")  String username,
+            @RequestParam(defaultValue = "1234") String password,
+            @RequestParam(defaultValue = "true") boolean withRefreshToken,
+            @RequestParam(defaultValue = "1234") String refreshToken
+            ){
        String subject = null;
        String scope = null;
 

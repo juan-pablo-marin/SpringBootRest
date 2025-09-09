@@ -1,6 +1,7 @@
 package com.aplication.rest.SpringBootRest.entities.makerEntitie.domain.dto;
 
 import com.aplication.rest.SpringBootRest.entities.productEntiti.domain.model.Product;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
