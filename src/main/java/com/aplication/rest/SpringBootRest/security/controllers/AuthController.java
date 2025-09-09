@@ -43,7 +43,7 @@ public class AuthController {
 
     @Operation(summary = "Aqui Genera el token para poder operar los metodos ",
             description = "para ingresar debe: grantType= password, username= user3, password= 1234, withRefreshToken = true, refreshToken = a  ",
-            tags ={"Token","Autorizacion"})
+            tags ={"Token"," Autorizacion"})
     @ApiCommonResponses
     @Parameters({
             @Parameter(name = "grantType", description = "Tipo Password"),
