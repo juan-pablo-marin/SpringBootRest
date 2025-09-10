@@ -16,4 +16,5 @@ public interface MakerOutputPort {
     MakerDTO saveMaker (MakerDTO makerDTO);
     MakerDTO update (MakerDTO makerDTO);
     PageResult<MakerDTO> listAll(int page, int size);
+    List<MakerDTO> filterWord(String word);
 }

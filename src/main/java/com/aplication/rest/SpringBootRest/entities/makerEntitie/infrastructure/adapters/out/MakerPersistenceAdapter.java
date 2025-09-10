@@ -74,4 +74,12 @@ public class MakerPersistenceAdapter implements  MakerOutputPort {
                 .totalPages(pg.getTotalPages())
                 .build();
     }
+
+    @Override
+    public List<MakerDTO> filterWord(String word) {
+    return  repository.filterword(word)
+                .stream()
+                .map(makerMapper::toMakerDto)
+                .toList();
+    }
 }

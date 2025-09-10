@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class MakerServiceImpl implements PageFindAllMaker, GetUseCase, DeleteByIdUseCase , GetByIdUseCase , GetAllUseCase, SaveMakerUseCase, UpdateMakerUseCase
+public class MakerServiceImpl implements FilterWordUseCase, PageFindAllMaker, GetUseCase, DeleteByIdUseCase , GetByIdUseCase , GetAllUseCase, SaveMakerUseCase, UpdateMakerUseCase
 {
 
     private final MakerOutputPort makerOutputPort;
@@ -57,5 +57,10 @@ public class MakerServiceImpl implements PageFindAllMaker, GetUseCase, DeleteByI
     @Override
     public PageResult<MakerDTO> listAll(int page, int size) {
         return makerOutputPort.listAll(page ,size);
+    }
+
+    @Override
+    public List<MakerDTO> filterWord(String word) {
+        return makerOutputPort.filterWord(word);
     }
 }

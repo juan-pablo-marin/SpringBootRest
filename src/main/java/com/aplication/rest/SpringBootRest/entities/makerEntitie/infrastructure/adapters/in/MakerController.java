@@ -37,6 +37,8 @@ public class MakerController {
     private final SaveMakerUseCase saveMakerUseCase;
     private final UpdateMakerUseCase updateMakerUseCase;
     private final PageFindAllMaker pageFindAllMaker;
+    private final FilterWordUseCase filterWordUseCase;
+
 
     @Operation(summary = "Elimina un registro por parametro",
             description = "Ingrese el Id del Fabricante que va Eliminar -> SCOPE : ADMIN",
@@ -59,7 +61,7 @@ public class MakerController {
     @ApiCommonResponses
     @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/getAll")
-    public ResponseEntity <?> getAll (){
+    public ResponseEntity <List<MakerDTO>> getAll (){
        List<MakerDTO> list =  getAllUseCase.getAll();
        return ResponseEntity.ok(list);
     }
@@ -108,7 +110,7 @@ public class MakerController {
     }
 
 
-    @Operation(summary = "Muestra por paginacion la informacion solicitada",
+    @Operation(summary = "Muestra por paginacion la informacion solicitada AUN PENDIENTE...",
             description = "Se lista la informacion segun la paginacion indicada -> SCOPE : ADMIN",
             tags ={"Fabricantes","listAll"})
     @ApiCommonResponses
@@ -124,5 +126,15 @@ public class MakerController {
 
         var result = pageFindAllMaker.listAll(pageable.getPageNumber(), pageable.getPageSize());
         return ResponseEntity.ok(result);
+    }
+    @Operation(summary = "Filtra por palabra clave",
+            description = "Busca en el campo nombre los que tenga parte de la palabra y muestra un listado -> SCOPE: ADMIN",
+            tags ={"Fabricantes","filter"})
+    @ApiCommonResponses
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @GetMapping("/filter/{word}")
+    public ResponseEntity<List<MakerDTO>> filter (@PathVariable String word ){
+        List<MakerDTO> list = filterWordUseCase.filterWord(word);
+        return ResponseEntity.ok(list);
     }
 }
